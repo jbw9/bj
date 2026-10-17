@@ -1,0 +1,33 @@
+:root {
+  --bg: #0f1412; --fg: #eef2ef; --mute: #8a958f; --key: #1c2420; --key-hi: #26302b;
+  --pos: #4ade80; --neg: #f87171; --accent: #60a5fa;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-tap-highlight-color: transparent; }
+main { max-width: 520px; min-height: 100%; margin: 0 auto; padding: 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: 14px; }
+
+.count { text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 160px; }
+#running { font-size: clamp(88px, 26vw, 160px); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+#running.pos { color: var(--pos); }
+#running.neg { color: var(--neg); }
+.sub { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; color: var(--mute); margin-top: 10px; font-size: 16px; }
+.sub b { color: var(--fg); font-variant-numeric: tabular-nums; }
+select { background: var(--key); color: var(--fg); border: 0; border-radius: 6px; padding: 2px 4px; font: inherit; }
+.last { height: 22px; margin-top: 8px; color: var(--mute); font-size: 15px; letter-spacing: 2px; overflow: hidden; white-space: nowrap; }
+
+button { font: inherit; color: var(--fg); background: var(--key); border: 0; border-radius: 12px; cursor: pointer; touch-action: manipulation; }
+button:active, button.flash { background: var(--key-hi); transform: scale(.97); }
+.pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.pad button { font-size: 26px; font-weight: 600; padding: 16px 0; }
+.pad .wide { grid-column: span 3; font-size: 20px; }
+.actions { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 8px; }
+.actions button { padding: 14px 0; font-size: 16px; }
+#mic.on { background: var(--accent); color: #06121f; }
+#mic.err { color: var(--neg); }
+.hint { text-align: center; color: var(--mute); font-size: 13px; margin: 0; }
+@media (hover: none) { .hint { display: none; } }
+@media (max-height: 640px) { .pad button { padding: 11px 0; } #running { font-size: 80px; } }
