@@ -11,9 +11,9 @@ main { max-width: 520px; min-height: 100%; margin: 0 auto; padding: 16px;
   display: flex; flex-direction: column; gap: 14px; }
 
 .count { text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 160px; }
-#running { font-size: clamp(88px, 26vw, 160px); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
-#running.pos { color: var(--pos); }
-#running.neg { color: var(--neg); }
+#true { font-size: clamp(88px, 26vw, 160px); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+#true.pos { color: var(--pos); }
+#true.neg { color: var(--neg); }
 .sub { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; color: var(--mute); margin-top: 10px; font-size: 16px; }
 .sub b { color: var(--fg); font-variant-numeric: tabular-nums; }
 select { background: var(--key); color: var(--fg); border: 0; border-radius: 6px; padding: 2px 4px; font: inherit; }
@@ -30,4 +30,5 @@ button:active, button.flash { background: var(--key-hi); transform: scale(.97); 
 #mic.err { color: var(--neg); }
 .hint { text-align: center; color: var(--mute); font-size: 13px; margin: 0; }
 @media (hover: none) { .hint { display: none; } }
-@media (max-height: 640px) { .pad button { padding: 11px 0; } #running { font-size: 80px; } }
+@media (hover: hover) and (pointer: fine) { .touch { display: none; } }
+@media (max-height: 640px) { .pad button { padding: 11px 0; } #true { font-size: 80px; } }

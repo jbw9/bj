@@ -14,10 +14,11 @@
   function render() {
     const rc = cards.reduce((s, r) => s + value(r), 0);
     const remaining = Math.max(0.5, decks - cards.length / 52);
-    const run = $('running');
-    run.textContent = rc > 0 ? '+' + rc : String(rc);
-    run.className = rc > 0 ? 'pos' : rc < 0 ? 'neg' : '';
-    $('true').textContent = (rc / remaining).toFixed(1);
+    const tc = rc / remaining;
+    const big = $('true');
+    big.textContent = (tc > 0 ? '+' : '') + tc.toFixed(1);
+    big.className = tc > 0 ? 'pos' : tc < 0 ? 'neg' : '';
+    $('running').textContent = rc > 0 ? '+' + rc : String(rc);
     $('seen').textContent = cards.length;
     $('last').textContent = cards.slice(-12).map(label).join(' ');
     try {
@@ -45,9 +46,10 @@
     mic.classList.toggle('on', state === 'listening');
     mic.classList.toggle('err', state === 'error');
     mic.textContent = state === 'listening' ? '🎤 Listening…' : '🎤 Voice';
-    if (message) $('hint').textContent = message;
+    $('hint').textContent = message || (state === 'listening' ? '🎤 Listening… press V to stop' : HINT);
   };
 
+  const HINT = $('hint').textContent;
   const newShoe = () => { cards = []; render(); };
 
   $('pad').addEventListener('click', (e) => {
